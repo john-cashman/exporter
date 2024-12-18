@@ -2,15 +2,6 @@ import streamlit as st
 from _markitdown import process_file  # Import your function from _markitdown.py
 import tempfile
 import os
-
-# Streamlit app
-st.title("PDF to Markdown Converter")
-st.write("Upload a PDF file, and we'll convert it to a Markdown file!")
-
-# File upload
-uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
-
-# type: ignore
 import base64
 import binascii
 import copy
@@ -29,7 +20,6 @@ from xml.dom import minidom
 from typing import Any, Dict, List, Optional, Union
 from urllib.parse import parse_qs, quote, unquote, urlparse, urlunparse
 from warnings import warn, resetwarnings, catch_warnings
-
 import mammoth
 import markdownify
 import pandas as pd
