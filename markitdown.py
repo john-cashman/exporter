@@ -23,4 +23,19 @@ if uploaded_file:
         
         # Display the Markdown output
         st.markdown("### Converted Markdown")
-        st.code
+        st.code(markdown_content, language="markdown")
+
+        # Allow user to download the Markdown file
+        markdown_filename = uploaded_file.name.replace(".pdf", ".md")
+        st.download_button(
+            label="Download Markdown File",
+            data=markdown_content,
+            file_name=markdown_filename,
+            mime="text/markdown",
+        )
+
+    except Exception as e:
+        st.error(f"An error occurred during conversion: {e}")
+    finally:
+        # Clean up temporary file
+        os.unlink(temp_pdf_path)
